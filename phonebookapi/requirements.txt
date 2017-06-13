@@ -1,2 +1,6 @@
+MySQLdb
+mysqlclient
 flask
 flask-cors
+knot
+bcrypt
