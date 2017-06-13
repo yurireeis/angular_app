@@ -1,0 +1,27 @@
+Services (AngularJS)
+========
+
+# isolar os servicos torna mais fácil testar
+# objeto único criado na inicialização
+
+Tipos de serviços:
+
+- Value: pode ser utilizado ao longo da aplicação, desde que
+- Constant: pode ser utilizado ao longo da aplicação (inclusive em Providers)
+- Factory: faz a invocação e tem um objeto de retorno (var getOperadora = fun ...)
+- Service: utiliza uma função construtora (this.getOPeradora = fun ...)
+- Provider: passar parâmetro para esse serviço configurando
+            (somente serviços do tipo provider podem ser configurados)
+            as configurações de um provider ficam na pasta config da mesma.
+            obs.: tem que ter o this.$get no construtor (é um misto de factory
+            com service)
+            obs2.: somente constants podem ser injetados no serviço do tipo
+            provider
+
+
+Criando Filtros:
+========
+
+# os filtros nem sempre filtram (as vezes eles transformam)
+# ele em si é uma função
+# o input que é repassado a expression ex.: {{ contato.telefone }}
