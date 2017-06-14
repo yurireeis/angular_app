@@ -15,6 +15,9 @@ class ContatoQuery(connector.Query):
         self._filter(Contato.nome == name)
         return self
 
+    def find(self):
+        return self
+
 
 class ContatoRepository(connector.Repository):
     _entity_class = Contato
