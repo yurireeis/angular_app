@@ -1,4 +1,4 @@
-Services (AngularJS)
+Criando Services (AngularJS)
 ========
 
 # isolar os servicos torna mais fácil testar
@@ -25,3 +25,41 @@ Criando Filtros:
 # os filtros nem sempre filtram (as vezes eles transformam)
 # ele em si é uma função
 # o input que é repassado a expression ex.: {{ contato.telefone }}
+
+
+Criando Directives
+========
+
+# as diretivas retornam DDO (Directive Definition Object)
+# esses objetos determinam as propriedades da diretiva
+# como o html é case insensitive e o js é case insensitive, no nome da diretiva
+  nós setamos como NgRepeat (no html será lido como ng-repeat)
+
+Tipos de propriedades:
+
+- template (ou templateUrl): tem funcionamnento parecido com o ng-include.
+  Essa propriedade serve para componentes que eu desejo reusar.
+  obs.: nem toda diretiva tem template
+
+- replace: se estiver setado como true ele remove o elemento ao qual você
+  acrescentou a diretiva. (o default é false)
+
+- restrict: são quatro tipos de restrições - "A" (ao atributo), "E"
+  (ao elemento), "C" (classe) e "M" (comentário/mensagem).
+  obs.: é possível também concatenar as restrições.
+
+- scope: define em qual escopo a diretiva está (para que não se colidam as
+  propriedades - ou variáveis).
+  Faz a mediação (passagem) da comunicação entre a diretiva e o local onde está
+  sendo aplicada.
+  O @ faz o vínculo do valor do atributo (do "title") com a propriedade da
+  diretiva (topic).
+  Se a propridade da diretiva e o nome forem iguais basta passar apenas o @
+  como valor que dará certo.
+  O = faz o two-way databinding, e o @ é one-way.
+  Quando você isola o escopo você deixa de acessar escopos externos.
+  Dica = caso queira saber em qual escopo está, basta usar o {{$id}}
+
+- transclude: serve para que o conteúdo dentro da tag onde será inserida a
+  diretiva não seja perdido. (porém não isola o escopo)
+  Setar ng-transclude na tag e no valor da propriedade setar como true.
