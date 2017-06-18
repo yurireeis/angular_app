@@ -63,3 +63,29 @@ Tipos de propriedades:
 - transclude: serve para que o conteúdo dentro da tag onde será inserida a
   diretiva não seja perdido. (porém não isola o escopo)
   Setar ng-transclude na tag e no valor da propriedade setar como true.
+
+- require: permite acesso a atributos do controller em questão.
+
+- link: usada após o template ser compilado, permitindo que se interaja com a
+  DOM.
+  O primeiro parâmetro é o scope, que será o mesmo do app caso você não isole o
+  escopo.
+  O segundo parâmetro é o element. (dar uma olhada no angular.jqLite)
+  O terceiro elemento são os atributos desse elemento.
+  O quarto elemento é o require, ao qual pode conceder acesso a atributos do
+  controller.
+
+  dica: estudar a API do ngModel e de elements
+
+  desafio: criar diretivas que formatem diversos tipos de valores (CEP, CPF ...)
+
+- controller: permite definir uma API que seja compartilhada com outras
+  diretivas
+  Para fazer isso basta criar uma outra diretiva que faça o registro das diretivas filhas.
+  Recomenda-se o estudo do serviço $compile (que fala sobre todas as propriedades)
+
+
+Modularização
+========
+
+- módulo é uma coleção de componentes (conjunto de controllers, directives, services, filters...)

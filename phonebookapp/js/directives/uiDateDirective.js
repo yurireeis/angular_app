@@ -14,6 +14,9 @@ angular.module("listaTelefonica").directive("uiDate", function($filter) {
           data = data.substring(0, 5) + "/" + data.substring(5, 9);
         }
 
+        // 30/10/1986
+        // 0123456789
+        
         return data;
 
       }

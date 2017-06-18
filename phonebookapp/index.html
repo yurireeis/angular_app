@@ -19,12 +19,27 @@
 	<script src="js/filters/ellipsisFilter.js"></script>
 	<script src="js/directives/uiAlertDirective.js"></script>
 	<script src="js/directives/uiDateDirective.js"></script>
+	<script src="js/directives/uiCpfDirective.js"></script>
+	<script src="js/directives/uiCepDirective.js"></script>
+	<script src="js/directives/uiAccordionDirective.js"></script>
 </head>
 <body ng-controller="listaTelefonicaCtrl">
 	<div class="jumbotron">
 		<h3>{{app}}</h3>
-		<ui-accordion>
-		</ui-accordion>
+		<ui-accordions>
+			<!-- ui-accordions é uma estratégia de criação de elemento pai -->
+			<ui-accordion title="accordion 1">
+				Mussum Ipsum, cacilds vidis litro abertis. Quem num gosta di mé, boa gentis num é. Per aumento de cachacis,
+				eu reclamis. Delegadis gente finis, bibendum egestas augue arcu ut est. Manduma pindureta quium dia nois
+				paga.
+			</ui-accordion>
+			<ui-accordion title="accordion 2">
+				Blandit hendrerit. Aenean sit amet nisi. Mais vale um bebadis conhecidiss, que
+				um alcoolatra anonimis. Aenean aliquam molestie leo, vitae iaculis nisl. Copo furadis é disculpa de bebadis,
+				arcu quam euismod magna.
+			</ui-accordion>
+		</ui-accordions>
+		<hr>
 		<div ui-alert title="Oops! Aconteceu um problema" message="error"></div>
 		<input class="form-control" type="text" ng-model="criterioDeBusca" placeholder="O que você está buscando?"/>
 		<table ng-show="contatos.length > 0" class="table table-striped">
@@ -50,6 +65,9 @@
 			<input class="form-control" type="text" ng-model="contato.nome" name="nome" placeholder="Nome" ng-required="true" ng-minlength="10"/>
 			<input class="form-control" type="text" ng-model="contato.telefone" name="telefone" placeholder="Telefone" ng-required="true" ng-pattern="/^\d{4,5}-\d{4}$/"/>
 			<input ui-date class="form-control" type="text" ng-model="contato.data" name="data" placeholder="data">
+			<input ui-cpf class="form-control" type="text" ng-model="contato.cpf" name="cpf" placeholder="cpf">
+			<input ui-cep class="form-control" type="text" ng-model="contato.cep" name="cep" placeholder="cep">
+			{{contato.cep}}
 			<select class="form-control" ng-model="contato.operadora" ng-options="operadora.nome + ' ( ' + (operadora.preco | currency) + ' )' for operadora in operadoras | orderBy:'nome'">
 				<option value="">Selecione uma operadora</option>
 			</select>
