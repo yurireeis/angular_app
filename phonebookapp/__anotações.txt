@@ -89,3 +89,6 @@ Modularização
 ========
 
 - módulo é uma coleção de componentes (conjunto de controllers, directives, services, filters...)
+- criação: angular.module("nomeDoModulo", []);
+- localização do módulo: angular.module("nomeDoModulo");
+- estudar estratégia do templateCache e o uglify com o Grunt;

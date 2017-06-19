@@ -25,7 +25,6 @@ services:
       - mysql
     volumes:
       - /home/yreis/projects/angular_app/phonebookapp:/var/www/html
-    restart: unless-stopped
     networks:
       - phonebook_sb
 
