@@ -1,4 +1,70 @@
-Criando Services (AngularJS)
+AngularJS
+========
+- tem componentes que podem ser reusáveis e modulares
+- pode ser integrado ao backend da aplicação
+- facilita a automação de testes
+- tem forte engajamento da comunidade
+- IE8 só funciona até o AngularJS 1.2
+- é passível de uglify (utilizando o grunt)
+
+
+Arquitetura
+========
+- MVC
+- View = Scope = Controller (o scope faz o intermédio entre eles)
+- ng são diretivas do Angular
+
+
+Diretivas
+========
+- extensões da linguagem HTML com novos comportamentos
+
+1) ngApp: define a fronteira da aplicação
+2) ngController: vincula a view ao Controller
+3) ngRepeat: para uso com arrays e objetos
+4) ngBind: pega do $scope e apresenta na view
+5) ngModel: pega da view e define no $scope.
+   obs.: por default é two way databind.
+6) ngInclude: inclui conteúdo dinamicamente
+7) ngRequired: para declarar em um campo que é obrigatório
+8) ngMinLength ~ ngMaxLength: para definir tamanho mínimo e máximo
+   obs.: não é máscara é sim validação.
+   $error: objeto que contém as validações e seus status
+9) ngPattern: regex para validação de campos
+10) ngClass: setar classes dinamicamente
+11) ngStyle: serve para setar o estilo dinamicamente inline
+12) ngShow ~ ngHide ~ ngIf: seve para apresentar/ocultar elementos de
+    forma dinâmica
+    obs: if interage com a DOM, hide/show são apenas variantes do display;
+13) ngClick: reage ao evento de clique.
+14) ngDisabled: desabilita um elemento dinamicamente
+15) ngOption: renderiza as opções de select
+
+    obs.: interpolação perdoa valores null (não gera exceção/não imprime nada)
+
+
+
+Design de Projeto
+========
+- domain style: agrupa arquivos por domínio
+
+  + app /
+    + login /
+      / css
+      / js
+      / view
+      / controller
+      / service
+    + questionario /
+      / css
+      / js
+      / view
+      / controller
+      / service
+    index.html
+
+
+Criando Services
 ========
 
 # isolar os servicos torna mais fácil testar
@@ -92,3 +158,21 @@ Modularização
 - criação: angular.module("nomeDoModulo", []);
 - localização do módulo: angular.module("nomeDoModulo");
 - estudar estratégia do templateCache e o uglify com o Grunt;
+
+
+SPA com ng-route
+========
+
+- utilização completa de tecnologias como o Ajax para que 100% da página seja única
+- tempo de loading seja um pouco superior comparado a outras aplicações (primeiro carregamento)
+- ngRoute fornece serviços para rotear páginas
+- para configurar o roteamento é necessário utilizar o $routeProvider
+- o segundo parâmetro é o route object // ex.: $routeProvider.when("/contatos", {});
+- ngView para renderizar o template da rota acessada
+- é possível configurar o controller no objeto de roteamento (fazendo o link dos dois)
+- o método otherwise permite que seja setada uma rota em caso de fallback
+- se usar o templateCache uma vez carregado ele irá retornar 304 (not modified)
+- se usar a configuração resolve é possível carregar dependências que sejam por ventura necessárias
+  (ele faz essa demanda de forma implícita caso implementado)
+  necessário revisar depois a parte do resolve quando a API estiver respondendo corretamente
+  (lição 14)
