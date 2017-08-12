@@ -1,33 +1,19 @@
-angular.module("ui").directive("uiDate", function ($filter) {
-	return {
-		require: "ngModel",
-		link: function (scope, element, attrs, ctrl) {
-			var _formatDate = function (date) {
-				date = date.replace(/[^0-9]+/g, "");
-				if(date.length > 2) {
-					date = date.substring(0,2) + "/" + date.substring(2);
-				}
-				if(date.length > 5) {
-					date = date.substring(0,5) + "/" + date.substring(5,9);
-				}
-				return date;
-			};
-
-			element.bind("keyup", function () {
-				ctrl.$setViewValue(_formatDate(ctrl.$viewValue));
-				ctrl.$render();
-			});
-
-			ctrl.$parsers.push(function (value) {
-				if (value.length === 10) {
-					var dateArray = value.split("/");
-					return new Date(dateArray[2], dateArray[1]-1, dateArray[0]).getTime();
-				}
-			});
-
-			ctrl.$formatters.push(function (value) {
-				return $filter("date")(value, "dd/MM/yyyy");
-			});
-		}
-	};
+angular.module("ui");
+angular.module("ui").directive('uiDate', function() {
+  return {
+    restrict: 'A',
+    require : 'ngModel',
+    link: function(scope, element, attrs, ngModelCtrl) {
+      $(element).datepicker({
+        dateFormat:'dd/mm/yy',
+        language: 'pt-BR',
+        pickTime: false,
+        startDate: '01-11-2013',
+        endDate: '01-11-2030'
+      }).on('changeDate', function(e) {
+        ngModelCtrl.$setViewValue(e.date.toLocaleDateString());
+        scope.$apply();
+      });
+    }
+  };
 });

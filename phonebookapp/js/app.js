@@ -1,1 +1,1 @@
-angular.module("listaTelefonica", ["ngMessages", "serialGenerator", "ui"]);
+angular.module("phoneBook", ["ngRoute", "ngMessages", "serialGenerator", "ui"]);

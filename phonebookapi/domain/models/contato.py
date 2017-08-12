@@ -9,14 +9,17 @@ class Contato(object):
         self.nome = nome
         self.telefone = telefone
 
+    def serialize(self):
+        return {c.nome: getattr(self, c.nome) for c in self.nome}
+
 
 class ContatoQuery(connector.Query):
     def find_by_name(self, name):
         self._filter(Contato.nome == name)
         return self
 
-    def find(self):
-        return self
+    def contatos(self):
+        self._filter(self, )
 
 
 class ContatoRepository(connector.Repository):

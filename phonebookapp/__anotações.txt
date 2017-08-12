@@ -176,3 +176,17 @@ SPA com ng-route
   (ele faz essa demanda de forma implícita caso implementado)
   necessário revisar depois a parte do resolve quando a API estiver respondendo corretamente
   (lição 14)
+
+
+Interceptor
+========
+
+- serviço que permite interceptar requisições e respostas http(s)
+- é registrado como uma factory
+- é necessário configurar o interceptor
+- é possível setar por exemplo, um timestamp interceptor (evitar problema cache)
+- o comportamento do angular frente a uma rejeição é não rotear (mantém na mesma
+  rota caso não tenha fallback)
+- $q é a imlementação default do angular para trabalhar com o padrão "promisses\
+  deferred".
+- loading interceptor: pode ser usado nos momentos de loading da aplicação

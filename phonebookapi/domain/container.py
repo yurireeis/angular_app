@@ -25,13 +25,11 @@ def apply_to_container(container):
     @knot.service(container)
     def models_user_repository(container):
         import domain.models as models
-
         return models.UserRepository(container('sqlalchemy_session'))
 
     @knot.service(container)
     def models_position_repository(container):
         import domain.models as models
-
         return models.PositionRepository(container('sqlalchemy_session'))
 
     @knot.service(container)

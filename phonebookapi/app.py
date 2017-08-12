@@ -1,3 +1,4 @@
+import json
 import knot
 from flask import Flask, request, jsonify
 from flask_cors import CORS
@@ -18,11 +19,17 @@ domain.apply_to_container(container)
 contato_repository = container('models_contato_repository')
 
 
+def result_list(model_object_response):
+    response = []
+    for r in model_object_response:
+        response.append(r.__dict__)
+    return response
+
+
 @app.route('/contatos', methods=['GET', 'POST'])
 def contatos():
     if request.method == 'GET':
-        query = contato_repository.create_query().find()
-        return contato_repository.find(query).all()
+        pass
 
     elif request.method == 'POST':
         pass
@@ -34,23 +41,21 @@ def operadoras():
         pass
 
 
-query = contato_repository.create_query().find()
-result = [].append(str(contato)) for contato in contato_repository.find(query).all()
-
+# query = contato_repository.create_query()
+# result = contato_repository.find_all(query)
+# pass
 # insert
 # contato = contato_repository.new(nome='Yuri', telefone='8888-8888')
 # contato_repository.insert(contato)
 # print('User %s created with id %d' % (contato.nome, contato.id))
-
-# find
-# query = contato_repository.create_query().find_all()
-# found = contato_repository.find(query).all()
-# print('User %s was created at %s' % (found.nome, found.data))
-
 # delete
 # for c in found:
 #     contato_repository.delete(c)
-
 # found = contato_repository.find(query).all()
 # if len(found) == 0:
 #     print('Deleted success!')
+
+query = contato_repository.create_query()
+v = contato_repository.find(query).all()
+test = json.dumps(dict(row.items()) for row in v)
+pass

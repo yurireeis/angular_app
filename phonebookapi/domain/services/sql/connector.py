@@ -61,5 +61,6 @@ class Result(object):
     def one(self):
         return self.__sql_query.one()
 
-    def count(self):
-        pass
+    def first(self):
+        return self.__sql_query.first()
+

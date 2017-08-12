@@ -1,10 +1,10 @@
-angular.module("listaTelefonica").filter("name", function () {
+angular.module("phoneBook").filter("name", function () {
 	return function (input) {
-		var listaDeNomes = input.split(" ");
-		var listaDeNomesFormatada = listaDeNomes.map(function (nome) {
-			if (/(da|de)/.test(nome)) return nome;
-			return nome.charAt(0).toUpperCase() + nome.substring(1).toLowerCase();
+		var nameList = input.split(" ");
+		var formattedNameList = nameList.map(function (name) {
+			if (/(da|de)/.test(name)) return name;
+			return name.charAt(0).toUpperCase() + name.substring(1).toLowerCase();
 		});
-		return listaDeNomesFormatada.join(" ");
+		return formattedNameList.join(" ");
 	};
 });

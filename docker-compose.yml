@@ -2,7 +2,7 @@ version: '2'
 
 services:
 
-  mysql:
+  mysqlavesoproject:
     image: mysql:8.0.1
     environment:
       - MYSQL_HOST=mysql
@@ -14,25 +14,25 @@ services:
       - /var/lib/mysql
     restart: always
     networks:
-      - phonebook_sb
+      - phonebook_avesoproject
 
-  apache:
+  apacheavesoproject:
     build: ./docker/server
     ports:
       - "80:80"
       - "443:443"
     links:
-      - mysql
+      - mysqlavesoproject
     volumes:
-      - /home/yreis/projects/angular_app/phonebookapp:/var/www/html
+      - /home/yreis/projects/aveso/phonebookapp:/var/www/html
     networks:
-      - phonebook_sb
+      - phonebook_avesoproject
 
 networks:
-  phonebook_sb:
+  phonebook_avesoproject:
     driver: bridge
     ipam:
       driver: default
       config:
-        - subnet: "172.21.0.1/24"
-          gateway: "172.21.0.1"
+        - subnet: "172.23.0.1/24"
+          gateway: "172.23.0.1"
